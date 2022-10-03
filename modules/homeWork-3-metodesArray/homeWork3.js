@@ -90,14 +90,40 @@ let arr = [
   /* 6. Сумма элементов двух массивов
 Напишите код, который создаёт массив элементов представляющих собой сумму соответствующих элементов заданных массивов */
 
-var arr1 = [1, 2, 3, 4, 5];
-var arr2 = [4, 5, 6];
-const sumTwoArrays = (arr1,arr2)=>{
-    let newArr = [];
 
-    return newArr;
-}
+let arr1 = [1, 2, 3, 3];
+let arr2 = [4, 5, 6, 3, 2];
+const sumTwoArrays = (arr1, arr2) => {
+  let newArr = [];
+  if (arr1.length > arr2.length) {
+    newArr = arr1.map((item, index) => {
+      let long1 = arr1.length - arr2.length,
+        long2 = arr2.length - arr1.length;
+      if (long1 > long2) {
+        arr2.push(0);
+      } else if (long1 < long2) {
+        arr1.push(0);
+      }
 
-     
+      return (newArr = arr1[index] + arr2[index]);
+    });
+  } else {
+    newArr = arr2.map((item, index) => {
+      let long1 = arr1.length - arr2.length,
+        long2 = arr2.length - arr1.length;
+      if (long1 > long2) {
+        arr2.push(0);
+      } else if (long1 < long2) {
+        arr1.push(0);
+      }
 
-document.writeln(sumTwoArrays(arr1,arr2)); // [5,7,9,4,5]
+      return (newArr = arr1[index] + arr2[index]);
+    });
+  }
+  return newArr;
+};
+
+console.log(sumTwoArrays(arr1, arr2)); // [5,7,9,4,5]
+
+//7 7. Количество повторяющихся элементов в массиве
+//Напишите функцию countIdentic(arr), которая возвращает количество повторяющихся элементов в массиве.
